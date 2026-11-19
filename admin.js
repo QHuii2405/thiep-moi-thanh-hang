@@ -570,7 +570,7 @@
       showToast('Đang kết nối và tải dữ liệu lên GitHub...', 'fa-cloud-arrow-up');
 
       const owner = 'QHuii2405';
-      const repo = 'thiep-moi';
+      const repo = 'thiep-moi-thanh-hang';
       const path = 'config.js';
       const branch = 'main';
 
