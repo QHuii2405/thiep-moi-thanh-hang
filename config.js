@@ -21,7 +21,7 @@ const DEFAULT_INVITATION_CONFIG = {
   ],
   "music": {
     "enabled": true,
-    "audioUrl": "<iframe style=\"border-radius:12px\" src=\"https://spotify.com\" width=\"100%\" height=\"152\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+    "audioUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-love-111303.mp3",
     "autoPlay": false
   },
   "autoScrollOnOpen": true,
