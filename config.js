@@ -44,7 +44,7 @@ const DEFAULT_INVITATION_CONFIG = {
   },
   "rsvp": {
     "enabled": true,
-    "googleSheetWebhook": "",
+    "googleSheetWebhook": "https://script.google.com/macros/s/AKfycbyzrCZhlTYQ8t21jBqiK6jUHLM8Fl6_RTcEbDl65oWbt5IZgzVTYm7aD1oRv94FwNZM3w/exec",
     "deadlineDate": "2026-11-25"
   },
   "initialWishes": []
