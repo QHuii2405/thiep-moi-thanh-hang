@@ -1,4 +1,4 @@
-// Cấu hình thiệp mời trực tuyến IvyInvi - Vũ Lâm Thanh Hằng
+// Cấu hình thiệp mời trực tuyến IvyInvi - Tự động cập nhật từ Admin Panel
 const DEFAULT_INVITATION_CONFIG = {
   "eventType": "LỄ TỐT NGHIỆP",
   "ownerName": "VŨ LÂM THANH HẰNG",
@@ -44,7 +44,7 @@ const DEFAULT_INVITATION_CONFIG = {
   },
   "rsvp": {
     "enabled": true,
-    "googleSheetWebhook": "https://script.google.com/macros/s/AKfycbyzrCZhlTYQ8t21jBqiK6jUHLM8Fl6_RTcEbDl65oWbt5IZgzVTYm7aD1oRv94FwNZM3w/exec",
+    "googleSheetWebhook": "",
     "deadlineDate": "2026-11-25"
   },
   "initialWishes": []
