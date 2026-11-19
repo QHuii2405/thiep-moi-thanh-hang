@@ -388,6 +388,8 @@
 
   // Render Responses (RSVP and Wishes)
   function renderResponses() {
+    const webhook = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || (document.getElementById('cfg-googleSheetWebhook') && document.getElementById('cfg-googleSheetWebhook').value.trim()) || '';
+
     // 1. RSVPs
     const rsvpContainer = document.getElementById('rsvp-table-container');
     const rsvps = JSON.parse(localStorage.getItem('ivy_rsvp_submissions') || '[]');
@@ -401,22 +403,55 @@
               <th>Họ và tên</th>
               <th>Xác nhận</th>
               <th>Thời gian</th>
+              <th style="width: 70px; text-align: center;">Xóa</th>
             </tr>
           </thead>
           <tbody>
       `;
-      rsvps.forEach(r => {
+      rsvps.forEach((r, idx) => {
         const badgeColor = r.status === 'Tham dự' ? '#10B981' : '#EF4444';
         html += `
           <tr>
             <td><strong>${escapeHtml(r.name)}</strong></td>
             <td><span style="color: ${badgeColor}; font-weight: 700;">${escapeHtml(r.status)}</span></td>
             <td style="color: var(--text-muted); font-size: 0.8rem;">${escapeHtml(r.timestamp || '')}</td>
+            <td style="text-align: center;">
+              <button type="button" class="btn-del-rsvp" data-idx="${idx}" data-name="${escapeHtml(r.name)}" data-time="${escapeHtml(r.timestamp || '')}" style="background: #FEE2E2; color: #DC2626; border: 1px solid #FCA5A5; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer;" title="Xóa dòng này">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
           </tr>
         `;
       });
       html += '</tbody></table>';
       rsvpContainer.innerHTML = html;
+
+      // Event listeners for RSVP delete
+      rsvpContainer.querySelectorAll('.btn-del-rsvp').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const idx = parseInt(this.getAttribute('data-idx'), 10);
+          const rName = this.getAttribute('data-name');
+          const rTime = this.getAttribute('data-time');
+
+          if (confirm(`Bạn có chắc muốn xóa phản hồi của "${rName}" không?`)) {
+            rsvps.splice(idx, 1);
+            localStorage.setItem('ivy_rsvp_submissions', JSON.stringify(rsvps));
+            renderResponses();
+
+            if (webhook) {
+              try {
+                fetch(webhook, {
+                  method: 'POST',
+                  mode: 'no-cors',
+                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                  body: JSON.stringify({ action: 'deleteRSVP', name: rName, timestamp: rTime })
+                });
+              } catch (e) {}
+            }
+            showToast('Đã xóa phản hồi tham dự!', 'fa-trash');
+          }
+        });
+      });
     }
 
     // 2. Wishes
@@ -434,22 +469,55 @@
               <th>Nội dung lời chúc</th>
               <th>Thả tim</th>
               <th>Thời gian</th>
+              <th style="width: 70px; text-align: center;">Xóa</th>
             </tr>
           </thead>
           <tbody>
       `;
-      wishes.forEach(w => {
+      wishes.forEach((w, idx) => {
         html += `
           <tr>
             <td><strong>${escapeHtml(w.name)}</strong></td>
             <td>${escapeHtml(w.message)}</td>
             <td>❤️ ${w.likes || 0}</td>
             <td style="color: var(--text-muted); font-size: 0.8rem;">${escapeHtml(w.time || '')}</td>
+            <td style="text-align: center;">
+              <button type="button" class="btn-del-wish" data-idx="${idx}" data-id="${escapeHtml(w.id || '')}" data-name="${escapeHtml(w.name || '')}" style="background: #FEE2E2; color: #DC2626; border: 1px solid #FCA5A5; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer;" title="Xóa lời chúc này">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
           </tr>
         `;
       });
       html += '</tbody></table>';
       wishesContainer.innerHTML = html;
+
+      // Event listeners for Wish delete
+      wishesContainer.querySelectorAll('.btn-del-wish').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const idx = parseInt(this.getAttribute('data-idx'), 10);
+          const wishId = this.getAttribute('data-id');
+          const wishName = this.getAttribute('data-name');
+
+          if (confirm(`Bạn có chắc muốn xóa lời chúc của "${wishName}" không?`)) {
+            wishes.splice(idx, 1);
+            localStorage.setItem('ivy_wishes_feed', JSON.stringify(wishes));
+            renderResponses();
+
+            if (webhook) {
+              try {
+                fetch(webhook, {
+                  method: 'POST',
+                  mode: 'no-cors',
+                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                  body: JSON.stringify({ action: 'deleteWish', id: wishId })
+                });
+              } catch (e) {}
+            }
+            showToast('Đã xóa lời chúc!', 'fa-trash');
+          }
+        });
+      });
     }
   }
 
@@ -485,24 +553,26 @@
       });
     });
 
-    // Clear Test Data
+    // Clear All Test Data (Both LocalStorage and Google Sheets)
     btnClearTestData.addEventListener('click', async () => {
-      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ dữ liệu phản hồi RSVP và Lời chúc thử nghiệm không?')) {
+      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ dữ liệu phản hồi (cả trên Google Sheets và các thiết bị) không?')) {
         localStorage.removeItem('ivy_rsvp_submissions');
         localStorage.removeItem('ivy_wishes_feed');
         renderResponses();
 
-        const webhook = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || '';
+        const webhook = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || (document.getElementById('cfg-googleSheetWebhook') && document.getElementById('cfg-googleSheetWebhook').value.trim()) || '';
         if (webhook) {
           try {
             fetch(webhook, {
               method: 'POST',
               mode: 'no-cors',
               headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-              body: JSON.stringify({ action: 'clearTestData' })
+              body: JSON.stringify({ action: 'clearAllData' })
             });
-          } catch (e) {}
-          alert('💡 Đã xóa bộ nhớ tạm trên máy này!\n\nVì hệ thống đã kết nối Google Sheets làm kho lưu trữ trung tâm, bạn chỉ cần mở file Google Sheet và XÓA các dòng test (từ hàng 2 trở đi, giữ lại hàng tiêu đề 1) là tất cả các thiết bị khác sẽ được dọn sạch hoàn toàn!');
+            showToast('Đã gửi lệnh xóa sạch dữ liệu trên Google Sheets!', 'fa-circle-check');
+          } catch (e) {
+            showToast('Lỗi gửi lệnh xóa: ' + e.message, 'fa-triangle-exclamation');
+          }
         } else {
           showToast('Đã dọn sạch dữ liệu thử nghiệm!', 'fa-trash');
         }

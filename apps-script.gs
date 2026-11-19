@@ -152,16 +152,50 @@ function doPost(e) {
       });
     }
 
-    if (action === 'clearTestData') {
+    if (action === 'deleteWish') {
+      var wishId = postData.id;
+      if (!wishId) return createJsonResponse({ status: 'error', message: 'Missing wish id' });
+      var wSheet = ss.getSheetByName('Wishes');
+      if (wSheet) {
+        var data = wSheet.getDataRange().getValues();
+        for (var i = 1; i < data.length; i++) {
+          if (String(data[i][0]) === String(wishId)) {
+            wSheet.deleteRow(i + 1);
+            return createJsonResponse({ status: 'success', message: 'Đã xóa lời chúc thành công' });
+          }
+        }
+      }
+      return createJsonResponse({ status: 'error', message: 'Không tìm thấy lời chúc để xóa' });
+    }
+
+    if (action === 'deleteRSVP') {
+      var rsvpName = postData.name;
+      var rsvpTime = postData.timestamp;
+      var rSheet = ss.getSheetByName('RSVP');
+      if (rSheet) {
+        var data = rSheet.getDataRange().getValues();
+        for (var i = 1; i < data.length; i++) {
+          var matchName = !rsvpName || String(data[i][1]) === String(rsvpName);
+          var matchTime = !rsvpTime || String(data[i][0]) === String(rsvpTime);
+          if (matchName && matchTime) {
+            rSheet.deleteRow(i + 1);
+            return createJsonResponse({ status: 'success', message: 'Đã xóa phản hồi RSVP thành công' });
+          }
+        }
+      }
+      return createJsonResponse({ status: 'error', message: 'Không tìm thấy phản hồi để xóa' });
+    }
+
+    if (action === 'clearTestData' || action === 'clearAllData') {
       var wSheet = ss.getSheetByName('Wishes');
       if (wSheet && wSheet.getLastRow() > 1) {
-        wSheet.getRange(2, 1, wSheet.getLastRow() - 1, wSheet.getLastColumn()).clearContent();
+        wSheet.deleteRows(2, wSheet.getLastRow() - 1);
       }
       var rSheet = ss.getSheetByName('RSVP');
       if (rSheet && rSheet.getLastRow() > 1) {
-        rSheet.getRange(2, 1, rSheet.getLastRow() - 1, rSheet.getLastColumn()).clearContent();
+        rSheet.deleteRows(2, rSheet.getLastRow() - 1);
       }
-      return createJsonResponse({ status: 'success', message: 'Đã xóa sạch dữ liệu thử nghiệm trên Google Sheets' });
+      return createJsonResponse({ status: 'success', message: 'Đã xóa sạch toàn bộ dữ liệu phản hồi trên Google Sheets' });
     }
 
     return createJsonResponse({ status: 'error', message: 'Unsupported action: ' + action });
