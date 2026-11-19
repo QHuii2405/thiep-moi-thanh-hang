@@ -21,7 +21,7 @@ const DEFAULT_INVITATION_CONFIG = {
   ],
   "music": {
     "enabled": true,
-    "audioUrl": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=inspiring-cinematic-ambient-116199.mp3",
+    "audioUrl": "<iframe style=\"border-radius:12px\" src=\"https://spotify.com\" width=\"100%\" height=\"152\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
     "autoPlay": false
   },
   "autoScrollOnOpen": true,
