@@ -146,6 +146,12 @@
     document.getElementById('cfg-accountHolder').value = appConfig.banking.accountHolder || '';
     document.getElementById('cfg-qrNote').value = appConfig.banking.qrNote || '';
     updateAdminQrPreview();
+
+    // Tab 6: Webhook URL
+    const webhookInput = document.getElementById('cfg-googleSheetWebhook');
+    if (webhookInput) {
+      webhookInput.value = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || '';
+    }
   }
 
   // Read all inputs into appConfig
@@ -187,6 +193,13 @@
     appConfig.banking.accountNumber = document.getElementById('cfg-bankAccount').value.trim();
     appConfig.banking.accountHolder = document.getElementById('cfg-accountHolder').value.trim().toUpperCase();
     appConfig.banking.qrNote = document.getElementById('cfg-qrNote').value.trim();
+
+    // Tab 6: Webhook URL
+    if (!appConfig.rsvp) appConfig.rsvp = { enabled: true };
+    const webhookInput = document.getElementById('cfg-googleSheetWebhook');
+    if (webhookInput) {
+      appConfig.rsvp.googleSheetWebhook = webhookInput.value.trim();
+    }
   }
 
   // Update live VietQR preview in Admin panel
@@ -481,6 +494,66 @@
         showToast('Đã dọn sạch dữ liệu thử nghiệm!', 'fa-trash');
       }
     });
+
+    // Save Webhook URL Only
+    const btnSaveWebhookOnly = document.getElementById('btn-save-webhook-only');
+    if (btnSaveWebhookOnly) {
+      btnSaveWebhookOnly.addEventListener('click', () => {
+        readFormInputs();
+        try {
+          localStorage.setItem('ivy_invitation_custom_config', JSON.stringify(appConfig));
+          showToast('Đã lưu URL Google Sheets Webhook vào máy!', 'fa-floppy-disk');
+        } catch (e) {
+          showToast('Lỗi lưu cấu hình: ' + e.message, 'fa-triangle-exclamation');
+        }
+      });
+    }
+
+    // Sync from Google Sheets Webhook
+    const btnSyncSheets = document.getElementById('btn-sync-google-sheets');
+    if (btnSyncSheets) {
+      btnSyncSheets.addEventListener('click', async () => {
+        readFormInputs();
+        const webhook = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || '';
+        if (!webhook) {
+          showToast('Vui lòng dán Link Google Sheets Webhook ở trên trước!', 'fa-triangle-exclamation');
+          return;
+        }
+
+        btnSyncSheets.disabled = true;
+        btnSyncSheets.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang tải từ Google Sheets...';
+
+        try {
+          const sep = webhook.includes('?') ? '&' : '?';
+          // 1. Fetch Wishes
+          const resW = await fetch(`${webhook}${sep}action=getWishes&_t=${Date.now()}`);
+          if (resW.ok) {
+            const dataW = await resW.json();
+            if (dataW && dataW.status === 'success' && Array.isArray(dataW.data)) {
+              localStorage.setItem('ivy_wishes_feed', JSON.stringify(dataW.data));
+            }
+          }
+
+          // 2. Fetch RSVPs
+          const resR = await fetch(`${webhook}${sep}action=getRSVP&_t=${Date.now()}`);
+          if (resR.ok) {
+            const dataR = await resR.json();
+            if (dataR && dataR.status === 'success' && Array.isArray(dataR.data)) {
+              localStorage.setItem('ivy_rsvp_submissions', JSON.stringify(dataR.data));
+            }
+          }
+
+          renderResponses();
+          showToast('Đã đồng bộ thành công dữ liệu từ Google Sheets!', 'fa-circle-check');
+        } catch (err) {
+          console.error(err);
+          showToast('Không thể kết nối Webhook. Vui lòng kiểm tra lại quyền truy cập Anyone!', 'fa-triangle-exclamation');
+        } finally {
+          btnSyncSheets.disabled = false;
+          btnSyncSheets.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Đồng bộ dữ liệu mới nhất từ Google Sheets';
+        }
+      });
+    }
 
     // Export Complete ZIP Package for GitHub Pages
     btnDownloadZip.addEventListener('click', exportCompleteZip);

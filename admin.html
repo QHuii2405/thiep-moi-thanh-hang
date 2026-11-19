@@ -656,6 +656,28 @@
       <section id="tab-responses" class="tab-pane">
         <h2 style="margin-bottom: 20px; font-size: 1.15rem;">Danh Sách Phản Hồi Từ Khách</h2>
 
+        <!-- CẤU HÌNH GOOGLE SHEETS WEBHOOK -->
+        <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 10px; padding: 18px; margin-bottom: 24px;">
+          <h3 style="font-size: 1rem; color: #166534; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-cloud-arrow-down"></i> Kết Nối Google Sheets Nhận Dữ Liệu Thực Tế
+          </h3>
+          <p style="font-size: 0.85rem; color: #374151; margin-bottom: 12px; line-height: 1.5;">
+            Khi khách gửi lời chúc hay bấm RSVP trên bất kỳ điện thoại hay trình duyệt nào, dữ liệu sẽ tự động lưu về Google Sheet của bạn và in lên tường thiệp mời của tất cả mọi người.
+          </p>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label" style="font-size: 0.82rem; font-weight: 700;">URL Google Apps Script Webhook (kết thúc bằng /exec):</label>
+            <input type="url" id="cfg-googleSheetWebhook" class="form-control" placeholder="https://script.google.com/macros/s/.../exec">
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" id="btn-sync-google-sheets" style="background: #10B981; color: #FFF; border: none; padding: 9px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-arrows-rotate"></i> Đồng bộ dữ liệu mới nhất từ Google Sheets
+            </button>
+            <button type="button" id="btn-save-webhook-only" style="background: #2563EB; color: #FFF; border: none; padding: 9px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-floppy-disk"></i> Lưu URL Webhook
+            </button>
+          </div>
+        </div>
+
         <div style="margin-bottom: 24px;">
           <h3 style="font-size: 1rem; margin-bottom: 10px;">1. Xác Nhận Tham Dự (RSVP)</h3>
           <div id="rsvp-table-container">

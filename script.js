@@ -118,6 +118,26 @@
     setupEventListeners();
     setupAudio();
     startCountdown();
+    loadWishesFromWebhook();
+  }
+
+  // Load live wishes from Google Sheets Webhook (nếu đã cấu hình)
+  async function loadWishesFromWebhook() {
+    if (!appConfig.rsvp || !appConfig.rsvp.googleSheetWebhook) return;
+    try {
+      const sep = appConfig.rsvp.googleSheetWebhook.includes('?') ? '&' : '?';
+      const url = `${appConfig.rsvp.googleSheetWebhook}${sep}action=getWishes&_t=${Date.now()}`;
+      const res = await fetch(url);
+      if (res.ok) {
+        const result = await res.json();
+        if (result && result.status === 'success' && Array.isArray(result.data)) {
+          localStorage.setItem('ivy_wishes_feed', JSON.stringify(result.data));
+          renderWishesList();
+        }
+      }
+    } catch (err) {
+      console.warn('Could not fetch wishes from Google Sheets webhook:', err);
+    }
   }
 
   // Handle URL Query Parameters (e.g. ?to=Anh+Tuấn)
@@ -425,6 +445,18 @@
         if (w.likes < 0) w.likes = 0;
         localStorage.setItem('ivy_wishes_feed', JSON.stringify(storedWishes));
         renderWishesList();
+
+        // Gửi lượt thích lên Google Sheets Webhook
+        if (w.liked && appConfig.rsvp && appConfig.rsvp.googleSheetWebhook && w.id) {
+          try {
+            fetch(appConfig.rsvp.googleSheetWebhook, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ action: 'likeWish', id: w.id })
+            });
+          } catch (e) {}
+        }
       });
 
       wishesListContainer.appendChild(card);
@@ -632,8 +664,10 @@
       const msg = wishMessageInput.value.trim();
       if (!author || !msg) return;
 
+      const wishId = 'wish_' + Date.now();
       const storedWishes = JSON.parse(localStorage.getItem('ivy_wishes_feed') || 'null') || [];
       const newWish = {
+        id: wishId,
         name: author,
         message: msg,
         time: 'Vừa xong',
@@ -646,6 +680,26 @@
       renderWishesList();
       wishMessageInput.value = '';
       wishCharCount.textContent = '0/500';
+
+      // Gửi lời chúc lên Google Sheets Webhook
+      if (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) {
+        try {
+          fetch(appConfig.rsvp.googleSheetWebhook, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'addWish',
+              id: wishId,
+              name: author,
+              message: msg,
+              time: new Date().toLocaleString('vi-VN')
+            })
+          });
+        } catch (err) {
+          console.warn('Post wish webhook error:', err);
+        }
+      }
 
       if (typeof confetti === 'function') {
         confetti({
@@ -675,8 +729,10 @@
       if (!name) return;
 
       const rsvpData = {
+        action: 'addRSVP',
         name: name,
         status: activeRsvpStatus === 'yes' ? 'Tham dự' : 'Không thể đến',
+        attendance: activeRsvpStatus === 'yes' ? 'yes' : 'no',
         timestamp: new Date().toLocaleString('vi-VN')
       };
 
