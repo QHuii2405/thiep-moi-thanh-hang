@@ -152,6 +152,18 @@ function doPost(e) {
       });
     }
 
+    if (action === 'clearTestData') {
+      var wSheet = ss.getSheetByName('Wishes');
+      if (wSheet && wSheet.getLastRow() > 1) {
+        wSheet.getRange(2, 1, wSheet.getLastRow() - 1, wSheet.getLastColumn()).clearContent();
+      }
+      var rSheet = ss.getSheetByName('RSVP');
+      if (rSheet && rSheet.getLastRow() > 1) {
+        rSheet.getRange(2, 1, rSheet.getLastRow() - 1, rSheet.getLastColumn()).clearContent();
+      }
+      return createJsonResponse({ status: 'success', message: 'Đã xóa sạch dữ liệu thử nghiệm trên Google Sheets' });
+    }
+
     return createJsonResponse({ status: 'error', message: 'Unsupported action: ' + action });
 
   } catch (error) {

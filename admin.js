@@ -486,12 +486,26 @@
     });
 
     // Clear Test Data
-    btnClearTestData.addEventListener('click', () => {
+    btnClearTestData.addEventListener('click', async () => {
       if (confirm('Bạn có chắc chắn muốn xóa toàn bộ dữ liệu phản hồi RSVP và Lời chúc thử nghiệm không?')) {
         localStorage.removeItem('ivy_rsvp_submissions');
         localStorage.removeItem('ivy_wishes_feed');
         renderResponses();
-        showToast('Đã dọn sạch dữ liệu thử nghiệm!', 'fa-trash');
+
+        const webhook = (appConfig.rsvp && appConfig.rsvp.googleSheetWebhook) || '';
+        if (webhook) {
+          try {
+            fetch(webhook, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify({ action: 'clearTestData' })
+            });
+          } catch (e) {}
+          alert('💡 Đã xóa bộ nhớ tạm trên máy này!\n\nVì hệ thống đã kết nối Google Sheets làm kho lưu trữ trung tâm, bạn chỉ cần mở file Google Sheet và XÓA các dòng test (từ hàng 2 trở đi, giữ lại hàng tiêu đề 1) là tất cả các thiết bị khác sẽ được dọn sạch hoàn toàn!');
+        } else {
+          showToast('Đã dọn sạch dữ liệu thử nghiệm!', 'fa-trash');
+        }
       }
     });
 
