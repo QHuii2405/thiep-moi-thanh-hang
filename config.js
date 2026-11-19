@@ -21,7 +21,7 @@ const DEFAULT_INVITATION_CONFIG = {
   ],
   "music": {
     "enabled": true,
-    "audioUrl": "assets/audio/background-music.wav",
+    "audioUrl": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=inspiring-cinematic-ambient-116199.mp3",
     "autoPlay": false
   },
   "autoScrollOnOpen": true,
