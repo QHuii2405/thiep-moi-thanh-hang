@@ -21,7 +21,7 @@ const DEFAULT_INVITATION_CONFIG = {
   ],
   "music": {
     "enabled": true,
-    "audioUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-love-111303.mp3",
+    "audioUrl": "https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=happy-day-113985.mp3",
     "autoPlay": false
   },
   "autoScrollOnOpen": true,
