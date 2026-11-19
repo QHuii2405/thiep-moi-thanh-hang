@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="coverBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF6F8"/>
+      <stop offset="50%" stop-color="#FCECEF"/>
+      <stop offset="100%" stop-color="#F8D7DE"/>
+    </linearGradient>
+    <linearGradient id="roseGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="40%" stop-color="#B76E79"/>
+      <stop offset="100%" stop-color="#8C4A55"/>
+    </linearGradient>
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A1525"/>
+      <stop offset="100%" stop-color="#2B0B14"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#coverBg)"/>
+
+  <!-- Decorative Ornate Borders -->
+  <rect x="30" y="30" width="740" height="940" rx="16" fill="none" stroke="url(#roseGoldGrad)" stroke-width="3" stroke-dasharray="6 6"/>
+  <rect x="44" y="44" width="712" height="912" rx="12" fill="none" stroke="#B76E79" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Corner Flourishes -->
+  <g fill="#B76E79">
+    <path d="M50 50 Q75 50 75 75 Q75 50 100 50 Q75 50 75 25 Q75 50 50 50 Z" opacity="0.7"/>
+    <path d="M750 50 Q725 50 725 75 Q725 50 700 50 Q725 50 725 25 Q725 50 750 50 Z" opacity="0.7"/>
+    <path d="M50 950 Q75 950 75 975 Q75 950 100 950 Q75 950 75 925 Q75 950 50 950 Z" opacity="0.7"/>
+    <path d="M750 950 Q725 950 725 975 Q725 950 700 950 Q725 950 725 925 Q725 950 750 950 Z" opacity="0.7"/>
+  </g>
+
+  <!-- Center Circle Frame -->
+  <circle cx="400" cy="420" r="210" fill="#FFFFFF" stroke="url(#roseGoldGrad)" stroke-width="4" filter="url(#glow)"/>
+  <circle cx="400" cy="420" r="198" fill="#FFF9FA" stroke="#F8D7DE" stroke-width="2"/>
+
+  <!-- Laurel Wreath Around Circle -->
+  <g stroke="#D4AF37" fill="none" stroke-width="2" opacity="0.6">
+    <path d="M230 460 C210 370 260 270 350 230"/>
+    <path d="M570 460 C590 370 540 270 450 230"/>
+  </g>
+
+  <!-- Silhouette & Graduation Cap Icon -->
+  <g transform="translate(400, 390)">
+    <!-- Mortarboard Cap -->
+    <polygon points="0,-90 90,-55 0,-20 -90,-55" fill="url(#capGrad)"/>
+    <polygon points="-50,-40 50,-40 40,-15 -40,-15" fill="#5A1A2C"/>
+    <!-- Gold Tassel -->
+    <line x1="0" y1="-55" x2="-70" y2="-25" stroke="#D4AF37" stroke-width="3"/>
+    <circle cx="-72" cy="-22" r="5" fill="#D4AF37"/>
+    <!-- Center Button -->
+    <circle cx="0" cy="-55" r="5" fill="#D4AF37"/>
+
+    <!-- Stylized Graduate Silhouette -->
+    <!-- Head -->
+    <circle cx="0" cy="20" r="42" fill="#B76E79" opacity="0.85"/>
+    <!-- Hair style contour -->
+    <path d="M-42,20 C-45,60 -30,85 -20,95 C-10,75 -5,55 -20,30 Z" fill="#8C4A55"/>
+    <path d="M42,20 C45,60 30,85 20,95 C10,75 5,55 20,30 Z" fill="#8C4A55"/>
+    <!-- Shoulders & Gown -->
+    <path d="M-95,140 C-85,85 -45,68 0,68 C45,68 85,85 95,140 Z" fill="url(#capGrad)"/>
+    <!-- V-collar / Ribbon -->
+    <polygon points="0,110 -35,70 35,70" fill="#B76E79"/>
+    <polygon points="0,102 -25,70 25,70" fill="#FFF0F3"/>
+    <!-- Diploma Scroll in Hands -->
+    <g transform="translate(0, 130)">
+      <rect x="-45" y="-8" width="90" height="18" rx="4" fill="#FFFFFF" stroke="#B76E79" stroke-width="2"/>
+      <rect x="-8" y="-10" width="16" height="22" fill="#D4AF37" rx="2"/>
+      <!-- Ribbon Ends -->
+      <path d="M-4 12 L-10 24 L-2 22 L2 24 L-2 12 Z" fill="#D4AF37"/>
+    </g>
+  </g>
+
+  <!-- Sparkles -->
+  <g fill="#D4AF37">
+    <text x="210" y="290" font-size="28">✨</text>
+    <text x="560" y="320" font-size="28">✨</text>
+    <text x="240" y="580" font-size="24">✨</text>
+    <text x="540" y="560" font-size="24">✨</text>
+  </g>
+
+  <!-- Typography: Name & Ceremony -->
+  <text x="400" y="690" font-family="'Playfair Display', 'Georgia', serif" font-size="40" font-weight="700" fill="#8C4A55" text-anchor="middle" letter-spacing="3">
+    VŨ LÂM THANH HẰNG
+  </text>
+  <text x="400" y="735" font-family="'Dancing Script', cursive, sans-serif" font-size="32" font-weight="600" fill="#B76E79" text-anchor="middle">
+    Lễ Tốt Nghiệp • Cử Nhân
+  </text>
+
+  <!-- University & Date Tag -->
+  <g transform="translate(400, 775)">
+    <rect x="-230" y="-22" width="460" height="44" rx="22" fill="#FFFFFF" stroke="#B76E79" stroke-width="1.5"/>
+    <text x="0" y="7" font-family="'Be Vietnam Pro', sans-serif" font-size="16" font-weight="600" fill="#006837" text-anchor="middle" letter-spacing="1">
+      🎓 TRƯỜNG ĐẠI HỌC NÔNG LÂM TP.HCM
+    </text>
+  </g>
+
+  <!-- Swap Photo Note for Host -->
+  <rect x="150" y="850" width="500" height="55" rx="8" fill="#FFFFFF" stroke="#D4AF37" stroke-width="1" stroke-dasharray="4 4" opacity="0.95"/>
+  <text x="400" y="873" font-family="'Be Vietnam Pro', sans-serif" font-size="14" font-weight="600" fill="#B76E79" text-anchor="middle">
+    📷 Khung ảnh chân dung tốt nghiệp
+  </text>
+  <text x="400" y="893" font-family="'Be Vietnam Pro', sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+    (Dễ dàng thay ảnh của bạn trong mục Hình Ảnh ở trang Quản trị hoặc config.js)
+  </text>
+</svg>

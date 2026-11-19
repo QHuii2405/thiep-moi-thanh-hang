@@ -19,7 +19,10 @@
     appConfig = typeof DEFAULT_INVITATION_CONFIG !== 'undefined' ? DEFAULT_INVITATION_CONFIG : {};
   }
 
-  // Tự động dọn sạch link nhạc/ảnh cũ nếu còn sót lại trong cache
+  // Tự động dọn sạch dữ liệu cũ hoặc link nhạc/ảnh cũ nếu còn sót lại trong cache
+  if (appConfig.ownerName && appConfig.ownerName.includes('HUY')) {
+    appConfig = typeof DEFAULT_INVITATION_CONFIG !== 'undefined' ? JSON.parse(JSON.stringify(DEFAULT_INVITATION_CONFIG)) : {};
+  }
   if (appConfig.music && appConfig.music.audioUrl && appConfig.music.audioUrl.includes('pixabay.com')) {
     appConfig.music.audioUrl = 'assets/audio/background-music.wav';
   }
@@ -69,6 +72,16 @@
 
   // 3. INITIALIZATION
   function init() {
+    document.title = 'Trang Quản Trị Thiệp Mời - NLU';
+    try {
+      const existingFavicons = document.querySelectorAll("link[rel*='icon']");
+      const v = '3.1';
+      existingFavicons.forEach(el => {
+        if (el.href) {
+          el.href = el.href.split('?')[0] + '?v=' + v;
+        }
+      });
+    } catch (e) {}
     setupTabNavigation();
     populateFormFields();
     setupMediaHandlers();

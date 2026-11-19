@@ -1,6 +1,21 @@
-# 💌 Thiệp Mời Online Chuẩn Phong Cách IvyInvi (Deploy Miễn Phí Trên GitHub Pages)
+# 💌 Thiệp Mời Online Chuẩn Phong Cách IvyInvi - Vũ Lâm Thanh Hằng
 
-Dự án thiệp mời điện tử trực tuyến (tốt nghiệp, đám cưới, sinh nhật, thôi nôi, sự kiện) được thiết kế tỉ mỉ theo phong cách **Polaroid - Beige Scrapbook Vintage** của IvyInvi (giống mẫu `quang-huy-5d6f11`).
+Dự án thiệp mời điện tử trực tuyến Lễ Tốt Nghiệp cho **Vũ Lâm Thanh Hằng** - Trường Đại học Nông Lâm TP.HCM (NLU), thiết kế theo phong cách nữ tính **Blush Pink & Rose Gold**.
+
+---
+
+## 📋 Hướng dẫn tích hợp Google Sheets (Google Apps Script Webhook)
+Để nhận thông tin xác nhận tham dự (RSVP) và lời chúc sổ lưu bút trực tiếp vào Google Sheets:
+1. Tạo một trang tính mới tại [Google Sheets](https://sheets.new).
+2. Vào **Tiện ích mở rộng** (Extensions) &rarr; **Apps Script**.
+3. Dán toàn bộ nội dung file `apps-script.gs` vào trình soạn thảo.
+4. Bấm **Triển khai** (Deploy) &rarr; **Triển khai mới** (New deployment) &rarr; Loại: **Ứng dụng web** (Web app).
+   - *Thực thi dưới dạng*: Tôi (My account).
+   - *Ai có quyền truy cập*: **Bất kỳ ai** (Anyone).
+5. Bấm **Triển khai**, sao chép URL Ứng dụng web được cấp (dạng `https://script.google.com/macros/s/.../exec`).
+6. Dán URL này vào `config.js` tại `appConfig.rsvp.googleSheetWebhook` (hoặc vào trang `admin.html` mục Cấu hình Webhook).
+
+---
 
 ### ✨ Ưu điểm vượt trội so với IvyInvi trả phí:
 - **100% Miễn phí & Vĩnh viễn**: Không tốn phí duy trì hàng tháng.

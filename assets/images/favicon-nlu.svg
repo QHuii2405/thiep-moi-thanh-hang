@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="nluRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006837"/>
+      <stop offset="50%" stop-color="#D48B06"/>
+      <stop offset="100%" stop-color="#B76E79"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge (White circle with rose/green/gold ring) -->
+  <circle cx="64" cy="64" r="60" fill="#FFFFFF" stroke="url(#nluRing)" stroke-width="5"/>
+  <circle cx="64" cy="64" r="53" fill="#FFF8F9" stroke="#E8C5C8" stroke-width="1.5"/>
+  
+  <!-- Graduation Cap (Forest Green + Gold) -->
+  <path d="M 64 26 L 100 42 L 64 55 L 28 42 Z" fill="#006837"/>
+  <path d="M 42 49 L 42 63 C 42 71 86 71 86 63 L 86 49 C 78 55 70 57 64 57 C 58 57 50 55 42 49 Z" fill="#004D25"/>
+  
+  <!-- Tassel (Gold) -->
+  <circle cx="64" cy="41" r="3" fill="#D48B06"/>
+  <path d="M 64 41 Q 38 46 36 58" fill="none" stroke="#D48B06" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="36" cy="59" r="3" fill="#D48B06"/>
+  
+  <!-- Text NLU -->
+  <text x="64" y="88" font-family="'Segoe UI', -apple-system, Arial, sans-serif" font-size="25" font-weight="900" fill="#006837" text-anchor="middle" letter-spacing="1.5">NLU</text>
+  
+  <!-- Decorative Star/Dot -->
+  <circle cx="64" cy="102" r="2.5" fill="#B76E79"/>
+  <path d="M 44 102 L 58 102 M 70 102 L 84 102" stroke="#D4837E" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

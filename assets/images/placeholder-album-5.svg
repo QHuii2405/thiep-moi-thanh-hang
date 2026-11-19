@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="albumBg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7F9"/>
+      <stop offset="50%" stop-color="#FCECEF"/>
+      <stop offset="100%" stop-color="#F6D5DC"/>
+    </linearGradient>
+    <linearGradient id="goldRose5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B76E79"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#albumBg5)"/>
+  <rect x="24" y="24" width="752" height="552" rx="14" fill="none" stroke="url(#goldRose5)" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="36" y="36" width="728" height="528" rx="10" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+
+  <!-- Center Card -->
+  <g transform="translate(400, 270)">
+    <circle cx="0" cy="0" r="90" fill="#FFFFFF" stroke="#B76E79" stroke-width="3"/>
+    <circle cx="0" cy="0" r="82" fill="#FFF0F3"/>
+    <text x="0" y="24" font-size="64" text-anchor="middle">💐</text>
+  </g>
+
+  <!-- Header & Subtitle -->
+  <text x="400" y="415" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="#8C4A55" text-anchor="middle" letter-spacing="1.5">
+    Những Nụ Cười Rạng Rỡ
+  </text>
+  <text x="400" y="450" font-family="'Dancing Script', cursive" font-size="22" font-weight="600" fill="#B76E79" text-anchor="middle">
+    Happy Smiles • Kỷ niệm #5
+  </text>
+
+  <!-- Badge -->
+  <rect x="250" y="480" width="300" height="36" rx="18" fill="#FFFFFF" stroke="#D4AF37" stroke-width="1.2"/>
+  <text x="400" y="503" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="600" fill="#B76E79" text-anchor="middle">
+    Vũ Lâm Thanh Hằng • NLU 2026
+  </text>
+
+  <!-- Mini Swap Photo Note -->
+  <text x="400" y="550" font-family="'Be Vietnam Pro', sans-serif" font-size="11" fill="#9CA3AF" text-anchor="middle">
+    (Thay ảnh #5 bằng file ảnh của bạn qua admin.html)
+  </text>
+</svg>

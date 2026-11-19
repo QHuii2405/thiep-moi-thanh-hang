@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nluGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006837"/>
+      <stop offset="100%" stop-color="#004D25"/>
+    </linearGradient>
+    <linearGradient id="nluGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDB913"/>
+      <stop offset="100%" stop-color="#D48B06"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- ================= CIRCULAR EMBLEM ================= -->
+  <g transform="translate(20, 0)">
+    <!-- White Circular Base -->
+    <circle cx="175" cy="175" r="145" fill="#FFFFFF" filter="url(#shadow)"/>
+    
+    <!-- Outer Green Border -->
+    <circle cx="175" cy="175" r="140" fill="none" stroke="url(#nluGreenGrad)" stroke-width="10"/>
+    <circle cx="175" cy="175" r="132" fill="none" stroke="url(#nluGoldGrad)" stroke-width="3"/>
+    
+    <!-- Outer Ring Base -->
+    <circle cx="175" cy="175" r="105" fill="#006837"/>
+    <circle cx="175" cy="175" r="98" fill="#FFFFFF"/>
+    
+    <!-- Circular Path for Upper Text -->
+    <path id="textArcTop" d="M 50,175 A 125,125 0 0,1 300,175" fill="none"/>
+    <text font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="800" fill="#006837" letter-spacing="2.2">
+      <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">
+        TRƯỜNG ĐẠI HỌC NÔNG LÂM
+      </textPath>
+    </text>
+
+    <!-- Circular Path for Bottom Text -->
+    <path id="textArcBottom" d="M 300,175 A 125,125 0 0,1 50,175" fill="none"/>
+    <text font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700" fill="#006837" letter-spacing="3">
+      <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">
+        ★ TP. HỒ CHÍ MINH ★
+      </textPath>
+    </text>
+
+    <!-- Center Graphic: Cogwheel (Engineering & Tech) -->
+    <g transform="translate(175, 175)">
+      <!-- Cog Teeth -->
+      <g fill="#D48B06">
+        <rect x="-8" y="-76" width="16" height="14" rx="2"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(30)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(60)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(90)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(120)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(150)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(180)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(210)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(240)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(270)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(300)"/>
+        <rect x="-8" y="-76" width="16" height="14" rx="2" transform="rotate(330)"/>
+      </g>
+      <circle cx="0" cy="0" r="70" fill="url(#nluGreenGrad)"/>
+      <circle cx="0" cy="0" r="64" fill="#FFFFFF"/>
+
+      <!-- Sun rays in upper half -->
+      <path d="M-45,-15 L0,-56 L45,-15 Z" fill="#FDB913" opacity="0.3"/>
+      <line x1="0" y1="-58" x2="0" y2="-20" stroke="#FDB913" stroke-width="3"/>
+      <line x1="-30" y1="-50" x2="-10" y2="-18" stroke="#FDB913" stroke-width="3"/>
+      <line x1="30" y1="-50" x2="10" y2="-18" stroke="#FDB913" stroke-width="3"/>
+      <line x1="-52" y1="-28" x2="-18" y2="-10" stroke="#FDB913" stroke-width="3"/>
+      <line x1="52" y1="-28" x2="18" y2="-10" stroke="#FDB913" stroke-width="3"/>
+
+      <!-- Plant / Sprout of Agriculture (Nông Nghiệp & Lâm Nghiệp) -->
+      <!-- Center Stem & Leaves -->
+      <path d="M0,28 C0,-5 -22,-20 -28,-42 C-14,-32 1,-20 0,28 Z" fill="#006837"/>
+      <path d="M0,28 C0,-5 22,-20 28,-42 C14,-32 -1,-20 0,28 Z" fill="#229648"/>
+      <path d="M0,15 C-2,-12 -12,-30 0,-48 C12,-30 2,-12 0,15 Z" fill="#78BE20"/>
+
+      <!-- Open Book of Knowledge -->
+      <path d="M-50,22 Q-25,12 0,20 Q25,12 50,22 L46,42 Q25,32 0,38 Q-25,32 -46,42 Z" fill="#004D25"/>
+      <path d="M-48,18 Q-25,8 0,16 Q25,8 48,18 L45,36 Q25,26 0,32 Q-25,26 -45,36 Z" fill="#FFFFFF"/>
+      <path d="M-44,22 Q-25,14 0,20 L0,30 Q-25,24 -42,32 Z" fill="#F8FAFC"/>
+      <path d="M44,22 Q25,14 0,20 L0,30 Q25,24 42,32 Z" fill="#F1F5F9"/>
+
+      <!-- Year Established: 1955 -->
+      <rect x="-24" y="38" width="48" height="18" rx="4" fill="#006837"/>
+      <text x="0" y="51" font-family="'Be Vietnam Pro', Arial, sans-serif" font-size="11" font-weight="800" fill="#FDB913" text-anchor="middle" letter-spacing="1.5">1955</text>
+    </g>
+  </g>
+
+  <!-- ================= TYPOGRAPHY & BANNER ================= -->
+  <g transform="translate(380, 0)">
+    <!-- Sub-label: BỘ GIÁO DỤC VÀ ĐÀO TẠO -->
+    <text x="0" y="90" font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="600" fill="#4B5563" letter-spacing="3.5">
+      BỘ GIÁO DỤC VÀ ĐÀO TẠO
+    </text>
+
+    <!-- Main University Name: TRƯỜNG ĐẠI HỌC NÔNG LÂM TP. HỒ CHÍ MINH -->
+    <text x="0" y="165" font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="48" font-weight="800" fill="#006837" letter-spacing="1.5">
+      TRƯỜNG ĐẠI HỌC NÔNG LÂM
+    </text>
+    <text x="0" y="225" font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="44" font-weight="800" fill="#006837" letter-spacing="2">
+      THÀNH PHỐ HỒ CHÍ MINH
+    </text>
+
+    <!-- English Subtitle: NONG LAM UNIVERSITY - HO CHI MINH CITY -->
+    <text x="0" y="278" font-family="'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="600" fill="#D48B06" letter-spacing="3">
+      NONG LAM UNIVERSITY — HO CHI MINH CITY
+    </text>
+
+    <!-- Decorative Accent Line -->
+    <rect x="0" y="300" width="850" height="4" rx="2" fill="url(#nluGreenGrad)"/>
+    <circle cx="870" cy="302" r="5" fill="#D48B06"/>
+    <circle cx="890" cy="302" r="3" fill="#006837"/>
+  </g>
+</svg>

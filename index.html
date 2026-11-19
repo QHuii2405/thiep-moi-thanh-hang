@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Lễ Tốt Nghiệp - Nguyễn Quang Huy | HUIT</title>
-  <meta name="description" content="Thiệp mời trực tuyến Lễ Tốt Nghiệp của Nguyễn Quang Huy - Trường Đại học Công Thương TP.HCM (HUIT).">
+  <title>Lễ Tốt Nghiệp - Vũ Lâm Thanh Hằng | NLU</title>
+  <meta name="description" content="Thiệp mời trực tuyến Lễ Tốt Nghiệp của Vũ Lâm Thanh Hằng - Trường Đại học Nông Lâm TP HCM (NLU).">
 
-  <!-- Favicon Logo Trường HUIT (Nền trắng tròn nổi bật) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2.4">
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2.4">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2.4">
-  <link rel="apple-touch-icon" href="favicon.png?v=2.4">
+  <!-- Favicon Logo Trường NLU (Trường Đại học Nông Lâm TP HCM) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon-nlu.svg?v=3.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-nlu-32.png?v=3.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-nlu.png?v=3.1">
+  <link rel="apple-touch-icon" href="assets/images/favicon-nlu.png?v=3.1">
+  <link rel="shortcut icon" href="favicon.ico?v=3.1">
+  <meta property="og:image" content="assets/images/logo-nlu.svg">
 
   <!-- Google Fonts: Be Vietnam Pro, Dancing Script, Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +42,7 @@
       </div>
       
       <div id="envelope-event-type" class="envelope-title">LỄ TỐT NGHIỆP</div>
-      <div id="envelope-owner-name" class="envelope-name">QUANG HUY</div>
+      <div id="envelope-owner-name" class="envelope-name">THANH HẰNG</div>
       
       <button id="btn-open-envelope" class="btn-open-card">
         <i class="fa-regular fa-envelope-open"></i> Mở thiệp mời
@@ -53,9 +55,9 @@
        ========================================================================== -->
   <main class="invitation-wrapper dot-texture" id="invitation-main">
     
-    <!-- Washi tape stickers -->
-    <div class="washi-tape washi-keep-going" style="top: 18px; left: -10px; transform: rotate(-8deg);">KEEP GOING ★</div>
-    <div class="washi-tape washi-kraft" style="top: 25px; right: 15px; width: 70px; transform: rotate(12deg);"></div>
+    <!-- Romantic Ribbon & Sparkle Badges -->
+    <div class="washi-tape washi-keep-going" style="top: 18px; left: -8px; transform: rotate(-5deg);">🌸 THANH XUÂN RỰC RỠ ✨</div>
+    <div class="washi-tape washi-kraft" style="top: 25px; right: 15px; width: 65px; transform: rotate(10deg);"></div>
 
     <!-- HERO SECTION: COVER PHOTO & TITLE -->
     <section class="hero-section">
@@ -64,12 +66,12 @@
         <span id="hero-event-type">LỄ TỐT NGHIỆP</span>
         <span>🎓</span>
       </div>
-      <h1 class="event-main-title" id="hero-owner-name">QUANG HUY</h1>
+      <h1 class="event-main-title" id="hero-owner-name">VŨ LÂM THANH HẰNG</h1>
       
       <!-- Polaroid Photo Frame -->
       <div class="polaroid-frame" id="cover-polaroid">
         <div class="washi-tape washi-kraft" style="top: -12px; left: 35%; width: 90px; transform: rotate(2deg);"></div>
-        <img id="hero-cover-photo" src="" alt="Ảnh chân dung" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'">
+        <img id="hero-cover-photo" src="assets/images/placeholder-cover.svg" alt="Ảnh chân dung Vũ Lâm Thanh Hằng" onerror="this.src='assets/images/placeholder-cover.svg'">
         <div class="polaroid-caption" id="hero-caption">Thanh xuân rực rỡ ✨</div>
       </div>
       
@@ -88,9 +90,9 @@
 
       <!-- Date & Time Box -->
       <div class="event-datetime-box">
-        <div class="event-day-string" id="display-date-string">Thứ Tư, 18.11.2026</div>
+        <div class="event-day-string" id="display-date-string">Thứ Tư, 25/11/2026</div>
         <div class="event-time-string" id="display-time-string">
-          <i class="fa-regular fa-clock"></i> Vào lúc: 14:00 - 23:30
+          <i class="fa-regular fa-clock"></i> Vào lúc: 11:30 - 12:30
         </div>
       </div>
 
@@ -129,10 +131,13 @@
 
       <!-- Venue & Google Maps Navigation -->
       <div class="venue-details">
-        <h3 class="venue-name" id="display-venue-name">Hội trường C - Trường Đại học Công Thương TP.HCM</h3>
-        <p class="venue-address" id="display-venue-address">140 Lê Trọng Tấn, Tây Thạnh, TP.HCM</p>
+        <div class="institution-branding" style="text-align: center; margin-bottom: 12px;">
+          <img src="assets/images/logo-nlu.svg" alt="Trường Đại học Nông Lâm TP HCM" style="max-height: 48px; max-width: 220px; object-fit: contain;">
+        </div>
+        <h3 class="venue-name" id="display-venue-name">Trường Đại học Nông Lâm TP HCM</h3>
+        <p class="venue-address" id="display-venue-address">Khu phố 9, Phường Linh Xuân, Thủ Đức</p>
         
-        <a id="btn-google-maps" href="https://maps.app.goo.gl/pGgrANA1JKMkDDLH7" target="_blank" rel="noopener noreferrer" class="btn-action">
+        <a id="btn-google-maps" href="https://www.google.com/maps/search/?api=1&query=Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+h%E1%BB%8Dc+N%C3%B4ng+L%C3%A2m+TP.HCM" target="_blank" rel="noopener noreferrer" class="btn-action">
           <i class="fa-solid fa-location-dot" style="color: var(--accent-terracotta);"></i> Xem chỉ đường trên Google Maps
         </a>
 
@@ -142,7 +147,7 @@
             <i class="fa-regular fa-comments"></i>
           </div>
           <div class="contact-banner-title" id="display-contact-banner">
-            Liên hệ với tuii khi đến nơi nhé — Nhấn để xem thông tin liên hệ
+            Liên hệ với Thanh Hằng khi đến nơi nhé — Nhấn để xem thông tin liên hệ
           </div>
           <div class="contact-banner-sub">
             Nhấn để xem thông tin liên hệ (Zalo, SĐT)
@@ -218,7 +223,7 @@
           <input type="text" id="rsvp-name-input" class="form-input" placeholder="Họ và tên của bạn..." required>
         </div>
 
-        <button type="submit" class="btn-submit-wish" style="background: var(--accent-terracotta);">
+        <button type="submit" class="btn-submit-wish">
           <i class="fa-solid fa-check"></i> Gửi xác nhận tham dự
         </button>
       </form>
@@ -250,7 +255,7 @@
         </div>
         <div class="bank-info-row">
           <span class="bank-info-label">Chủ tài khoản: </span>
-          <span class="bank-info-value" id="display-account-holder">NGUYEN QUANG HUY</span>
+          <span class="bank-info-value" id="display-account-holder">VU LAM THANH HANG</span>
         </div>
 
         <button type="button" class="btn-copy-account" id="btn-copy-acc">
@@ -291,7 +296,7 @@
   <!-- Modal: Thông Tin Liên Hệ (Thiết kế phong cách Vintage Scrapbook tiệp màu thiệp) -->
   <div id="contact-modal" class="modal-backdrop">
     <div class="modal-content">
-      <div class="washi-tape washi-keep-going" style="top: -10px; left: 15px; transform: rotate(-5deg); z-index: 10;">CONTACT ★</div>
+      <div class="washi-tape washi-keep-going" style="top: -10px; left: 15px; transform: rotate(-3deg); z-index: 10;">💌 LIÊN HỆ YÊU THƯƠNG 💕</div>
       
       <div class="modal-header">
         <button type="button" class="modal-close-btn" data-close="contact-modal" title="Đóng">&times;</button>
@@ -299,7 +304,7 @@
           <i class="fa-solid fa-phone-volume"></i>
         </div>
         <h3 class="modal-title-vintage">Thông Tin Liên Hệ</h3>
-        <div class="modal-subtitle-script" id="contact-modal-owner">Quang Huy</div>
+        <div class="modal-subtitle-script" id="contact-modal-owner">Thanh Hằng</div>
       </div>
 
       <div class="modal-body">
@@ -309,13 +314,13 @@
 
         <div class="contact-action-list">
           <!-- Zalo Item -->
-          <a id="contact-link-zalo" href="https://zalo.me/0336395450" target="_blank" class="contact-action-item">
+          <a id="contact-link-zalo" href="https://zalo.me/0348103398" target="_blank" class="contact-action-item">
             <div class="contact-item-icon icon-zalo">
               <i class="fa-solid fa-comment-dots"></i>
             </div>
             <div class="contact-item-text">
               <div class="contact-item-label">Nhắn tin Zalo</div>
-              <div class="contact-item-val" id="contact-val-zalo">0336 395 450</div>
+              <div class="contact-item-val" id="contact-val-zalo">0348 103 398</div>
             </div>
             <div class="contact-item-arrow">
               <i class="fa-solid fa-chevron-right"></i>
@@ -323,13 +328,13 @@
           </a>
 
           <!-- Phone Item -->
-          <a id="contact-link-phone" href="tel:0336395450" class="contact-action-item">
+          <a id="contact-link-phone" href="tel:0348103398" class="contact-action-item">
             <div class="contact-item-icon icon-phone">
               <i class="fa-solid fa-phone"></i>
             </div>
             <div class="contact-item-text">
               <div class="contact-item-label">Gọi điện trực tiếp</div>
-              <div class="contact-item-val" id="contact-val-phone">0336 395 450</div>
+              <div class="contact-item-val" id="contact-val-phone">0348 103 398</div>
             </div>
             <div class="contact-item-arrow">
               <i class="fa-solid fa-chevron-right"></i>
@@ -337,7 +342,7 @@
           </a>
 
           <!-- Facebook Item -->
-          <a id="contact-link-fb" href="https://www.facebook.com/huy.172500?locale=vi_VN" target="_blank" class="contact-action-item">
+          <a id="contact-link-fb" href="https://www.facebook.com/share/1F81MKGY48/" target="_blank" class="contact-action-item">
             <div class="contact-item-icon icon-fb">
               <i class="fa-brands fa-facebook"></i>
             </div>

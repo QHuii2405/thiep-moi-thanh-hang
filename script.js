@@ -102,8 +102,17 @@
   // 3. INITIALIZATION
   function init() {
     if (appConfig.eventType && appConfig.ownerName) {
-      document.title = `${appConfig.eventType} - ${appConfig.ownerName} | HUIT`;
+      document.title = `${appConfig.eventType} - ${appConfig.ownerName} | NLU`;
     }
+    try {
+      const existingFavicons = document.querySelectorAll("link[rel*='icon']");
+      const v = '3.1';
+      existingFavicons.forEach(el => {
+        if (el.href) {
+          el.href = el.href.split('?')[0] + '?v=' + v;
+        }
+      });
+    } catch (e) {}
     handleUrlParams();
     renderAll();
     setupEventListeners();
@@ -126,12 +135,12 @@
   function renderAll() {
     // Envelope Info
     elEnvelopeEventType.textContent = appConfig.eventType || 'LỄ TỐT NGHIỆP';
-    elEnvelopeOwnerName.textContent = appConfig.ownerName || 'QUANG HUY';
+    elEnvelopeOwnerName.textContent = appConfig.ownerName || 'THANH HẰNG';
 
     // Hero Section
     elHeroEventType.textContent = appConfig.eventType || 'LỄ TỐT NGHIỆP';
-    elHeroOwnerName.textContent = appConfig.ownerName || 'QUANG HUY';
-    if (elFooterOwnerName) elFooterOwnerName.textContent = appConfig.ownerName || 'Quang Huy';
+    elHeroOwnerName.textContent = appConfig.ownerName || 'VŨ LÂM THANH HẰNG';
+    if (elFooterOwnerName) elFooterOwnerName.textContent = appConfig.ownerName || 'Thanh Hằng';
     if (appConfig.coverPhoto) {
       elHeroCoverPhoto.src = appConfig.coverPhoto;
     }
@@ -533,7 +542,8 @@
         confetti({
           particleCount: 70,
           spread: 60,
-          origin: { y: 0.6 }
+          origin: { y: 0.6 },
+          colors: ['#D4837E', '#B76E79', '#ECC5C0', '#F7D6D0', '#FFD1DC', '#F4C2C2']
         });
       }
       elEnvelopeScreen.classList.add('opened');
@@ -638,7 +648,12 @@
       wishCharCount.textContent = '0/500';
 
       if (typeof confetti === 'function') {
-        confetti({ particleCount: 40, spread: 50, origin: { y: 0.8 } });
+        confetti({
+          particleCount: 40,
+          spread: 50,
+          origin: { y: 0.8 },
+          colors: ['#D4837E', '#B76E79', '#ECC5C0', '#F7D6D0', '#FFD1DC', '#F4C2C2']
+        });
       }
 
       showToast('Cảm ơn bạn đã gửi lời chúc tốt đẹp!', 'fa-heart');
@@ -685,7 +700,12 @@
       localStorage.setItem('ivy_rsvp_submissions', JSON.stringify(rsvps));
 
       if (typeof confetti === 'function') {
-        confetti({ particleCount: 50, spread: 70, origin: { y: 0.8 } });
+        confetti({
+          particleCount: 50,
+          spread: 70,
+          origin: { y: 0.8 },
+          colors: ['#D4837E', '#B76E79', '#ECC5C0', '#F7D6D0', '#FFD1DC', '#F4C2C2']
+        });
       }
 
       showToast('Đã nhận xác nhận của bạn! Rất mong được gặp bạn!', 'fa-circle-check');
